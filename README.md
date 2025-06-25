@@ -1,6 +1,6 @@
 # Xây dựng Trợ lý AI hỏi đáp PDF với RAG, LangChain, Streamlit và LLM nội bộ – Hành trình của Đạt
 
-Xin chào mọi người! Mình là Đạt. Trong bài blog này, mình sẽ chia sẻ cách mình xây dựng một trợ lý AI có thể đọc, hiểu và trả lời câu hỏi về tài liệu PDF học thuật, sử dụng các công nghệ hiện đại như RAG (Retrieval-Augmented Generation), LangChain, Streamlit và một mô hình ngôn ngữ lớn (LLM) chạy hoàn toàn nội bộ. Bài viết này sẽ hướng dẫn chi tiết từng bước để bạn có thể tự triển khai và mở rộng hệ thống này cho nhu cầu cá nhân.
+Xin chào mọi người!Trong bài blog này, mình sẽ chia sẻ cách mình xây dựng một trợ lý AI có thể đọc, hiểu và trả lời câu hỏi về tài liệu PDF học thuật, sử dụng các công nghệ hiện đại như RAG (Retrieval-Augmented Generation), LangChain, Streamlit và một mô hình ngôn ngữ lớn (LLM) chạy hoàn toàn nội bộ. Bài viết này sẽ hướng dẫn chi tiết từng bước để bạn có thể tự triển khai và mở rộng hệ thống này cho nhu cầu cá nhân.
 ---
 
 ## 1. Mục tiêu của project
@@ -31,7 +31,7 @@ Xin chào mọi người! Mình là Đạt. Trong bài blog này, mình sẽ chi
 ```bash
 # Clone về máy
 https://github.com/tandat8896/rag_qa_pdf_project1.git
-cd Project_2_Rag_PDF/src
+cd rag_qa_pdf_project1
 ```
 
 ### 3.2. Cài đặt dependencies
@@ -57,7 +57,7 @@ pip install -r requirements.txt
 ## 4. Chạy ứng dụng
 
 ```bash
-streamlit run src/app.py
+streamlit run src/app_update.py
 ```
 
 - Giao diện web sẽ mở ở địa chỉ: http://localhost:8501
