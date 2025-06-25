@@ -109,26 +109,7 @@ streamlit run src/app_update.py
 
 ---
 
-## 7. Demo kết quả thực tế
-**Ví dụ:** Hỏi về paper "Attention Is All You Need"
-
-- **Câu hỏi:** "Transformer architecture được giới thiệu trong bài báo nào?"
-- **Câu trả lời:**
-  > "Transformer architecture được giới thiệu trong bài báo 'Attention Is All You Need'."
-- **Debug reasoning:**
-  - Thought: Cần tìm paper giới thiệu Transformer
-  - Action: Tìm trong Knowledge Base
-  - Observation: Paper 'Attention Is All You Need' introduces 'Transformer architecture'
-  - Final Answer: ...
-
-**Xem thêm:**
-- Thống kê Knowledge Base: số entity, relation
-- Chi tiết các entity, relation
-- Visualization Knowledge Graph
-
----
-
-## 8. Gợi ý mở rộng
+## 7. Gợi ý mở rộng
 - Thêm loại entity, relation mới cho Knowledge Base
 - Cải thiện extraction bằng spaCy, regex, hoặc mô hình NER
 - Tích hợp LLM lớn hơn (Qwen, Llama, GPT...) để reasoning tốt hơn
@@ -138,8 +119,7 @@ streamlit run src/app_update.py
 
 ---
 
-
-## 9. Lời kết
+## 8. Lời kết
 
 Mình hy vọng bài blog này sẽ giúp bạn dễ dàng xây dựng một trợ lý AI hỏi đáp PDF mạnh mẽ, dễ mở rộng và hoàn toàn private. Nếu có câu hỏi, góp ý hoặc muốn trao đổi thêm, hãy liên hệ với mình – Đạt!
 
