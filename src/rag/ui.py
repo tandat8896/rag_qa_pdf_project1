@@ -103,19 +103,25 @@ def show_chunk_similarity_debug(chunk_similarities):
     with st.expander("Xem similarity các chunk (debug)"):
         st.write("### Similarity của 5 chunk đầu tiên:")
         for i, chunk in enumerate(chunk_similarities[:5]):
-            st.markdown(f"**Chunk {i+1}:** {chunk['content']}")
+            start_idx = chunk['metadata'].get('start_index', None)
+            idx_str = f" | start_index: {start_idx}" if start_idx is not None else ""
+            st.markdown(f"**Chunk {i+1}{idx_str}:** {chunk['content']}")
             st.markdown(f"Similarity: {chunk['similarity']:.4f}")
         st.write("### Similarity của 3 chunk được chọn:")
         top_chunks = [c for c in chunk_similarities if c['is_selected']]
         for idx, chunk in enumerate(top_chunks):
-            st.markdown(f"**Chunk:** {chunk['content']}")
+            start_idx = chunk['metadata'].get('start_index', None)
+            idx_str = f" | start_index: {start_idx}" if start_idx is not None else ""
+            st.markdown(f"**Chunk{idx_str}:** {chunk['content']}")
             st.markdown(f"Similarity: {chunk['similarity']:.4f}")
 
 def show_context(source_documents, chunk_similarities=None):
     with st.expander("Xem context đã sử dụng (debug)"):
         st.markdown("---")
         for i, doc in enumerate(source_documents):
-            st.markdown(f"**Nguồn {i+1} (Trang: {doc.metadata.get('page', 'N/A')})**")
+            start_idx = doc.metadata.get('start_index', None)
+            idx_str = f" | start_index: {start_idx}" if start_idx is not None else ""
+            st.markdown(f"**Nguồn {i+1}{idx_str} (Trang: {doc.metadata.get('page', 'N/A')})**")
             st.markdown(doc.page_content)
             st.markdown("---")
     if chunk_similarities:

@@ -102,11 +102,17 @@ def answer_question(question, retriever, docs, embeddings, knowledge_base, chain
         q_emb = embeddings.embed_query(question)
         chunk_embs = [embeddings.embed_query(doc.page_content) for doc in docs]
         sims = [cosine_sim(q_emb, c_emb) for c_emb in chunk_embs]
-        top3_idx = np.argsort(sims)[-3:][::-1]
-        top_chunks = [docs[i] for i in top3_idx]
+        # Lọc theo percentile threshold (95%)
+        threshold = np.percentile(sims, 95)
+        filtered_idx = [i for i, sim in enumerate(sims) if sim >= threshold]
+        if len(filtered_idx) >= 1:
+            selected_idx = filtered_idx
+        else:
+            selected_idx = np.argsort(sims)[-3:][::-1]
+        top_chunks = [docs[i] for i in selected_idx]
         # Build chunk_similarities for debug
         for i, (doc, sim) in enumerate(zip(docs, sims)):
-            is_selected = i in top3_idx
+            is_selected = i in selected_idx
             chunk_similarities.append({
                 'content': doc.page_content,
                 'similarity': float(sim),

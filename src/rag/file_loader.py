@@ -88,4 +88,17 @@ class TextSplitter:
             raise ValueError(f"chunker_type không hợp lệ: {chunker_type}")
     
     def __call__(self, documents):
-        return self.splitter.split_documents(documents)
+        # Thêm start_index cho mỗi chunk
+        chunks = self.splitter.split_documents(documents)
+        for doc in chunks:
+            if 'start_index' not in doc.metadata:
+                # Tìm vị trí bắt đầu của chunk trong văn bản gốc (nếu có thể)
+                content = doc.page_content
+                for orig_doc in documents:
+                    idx = orig_doc.page_content.find(content)
+                    if idx != -1:
+                        doc.metadata['start_index'] = idx
+                        break
+                else:
+                    doc.metadata['start_index'] = -1
+        return chunks
